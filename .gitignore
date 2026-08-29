@@ -1,0 +1,12 @@
+# Project-local ledger data
+.ledger/
+
+# Local Go build output
+/ledger
+*.test
+*.out
+
+# SQLite sidecars and ad-hoc databases
+*.db-shm
+*.db-wal
+*.db-journal
