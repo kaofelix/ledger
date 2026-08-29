@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"ledger/internal/store"
+	"github.com/kaofelix/ledger/internal/store"
 )
 
 var (

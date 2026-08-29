@@ -1,4 +1,4 @@
-module ledger
+module github.com/kaofelix/ledger
 
 go 1.25.0
 

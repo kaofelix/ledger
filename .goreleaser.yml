@@ -1,0 +1,61 @@
+version: 2
+
+project_name: ledger
+
+builds:
+  - id: ledger
+    main: .
+    binary: ledger
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: ledger
+    ids:
+      - ledger
+    formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+brews:
+  - name: ledger
+    ids:
+      - ledger
+    repository:
+      owner: kaofelix
+      name: homebrew-tap
+      git:
+        url: ssh://git@github.com/kaofelix/homebrew-tap.git
+        private_key: "{{ .Env.HOMEBREW_TAP_PRIVATE_KEY }}"
+    commit_author:
+      name: ledger-release-bot
+      email: me@kaofelix.dev
+    directory: Formula
+    homepage: https://github.com/kaofelix/ledger
+    description: Append-only local memory ledger for AI agents
+    install: |
+      bin.install "ledger"
+    test: |
+      system bin/"ledger", "init"
+      assert_path_exists testpath/".ledger/ledger.db"

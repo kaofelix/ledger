@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"ledger/internal/app"
+	"github.com/kaofelix/ledger/internal/app"
 )
 
 func TestAddFromSubdirectoryPersistsPutAndPrintsStableEntryID(t *testing.T) {

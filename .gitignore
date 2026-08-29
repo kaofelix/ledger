@@ -1,8 +1,9 @@
 # Project-local ledger data
 .ledger/
 
-# Local Go build output
+# Local Go and release build output
 /ledger
+/dist/
 *.test
 *.out
 

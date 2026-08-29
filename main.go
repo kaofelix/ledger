@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"ledger/internal/app"
+	"github.com/kaofelix/ledger/internal/app"
 )
 
 func main() {
